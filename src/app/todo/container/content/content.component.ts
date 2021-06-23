@@ -20,6 +20,10 @@ export class ContentComponent implements OnInit {
       this.items = this.items.filter((x) => x.id !== item.id);
       this.items.push(item);
     });
+
+    signalRService.itemDeleted.subscribe((id: string) => {
+      this.items = this.items.filter((x) => x.id !== id);
+    });
   }
 
   ngOnInit(): void {

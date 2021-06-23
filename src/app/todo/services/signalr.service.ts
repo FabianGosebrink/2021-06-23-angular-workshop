@@ -13,6 +13,7 @@ export class SignalRService {
 
   private itemUpdatedInternal = new Subject();
   private itemAddededInternal = new Subject();
+  private itemDeletedInternal = new Subject();
 
   get itemUpdated() {
     return this.itemUpdatedInternal.asObservable();
@@ -20,6 +21,10 @@ export class SignalRService {
 
   get itemAdded() {
     return this.itemAddededInternal.asObservable();
+  }
+
+  get itemDeleted() {
+    return this.itemDeletedInternal.asObservable();
   }
 
   constructor() {
@@ -40,6 +45,10 @@ export class SignalRService {
 
     this.connection.on('todo-updated', (item) => {
       this.itemUpdatedInternal.next(item);
+    });
+
+    this.connection.on('todo-deleted', (id) => {
+      this.itemDeletedInternal.next(id);
     });
   }
 }
