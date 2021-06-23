@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from '../../services/todo';
 import { TodoService } from '../../services/todo.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements OnInit {
-  mySuperPoopyItems: string[] = [];
+  mySuperPoopyItems: Todo[] = [];
 
   constructor(private todoService: TodoService) {}
 
@@ -26,6 +27,8 @@ export class ContentComponent implements OnInit {
   }
 
   private getAllItems() {
-    this.mySuperPoopyItems = this.todoService.getAll();
+    this.todoService.getAll().subscribe((result) => {
+      this.mySuperPoopyItems = result;
+    });
   }
 }
