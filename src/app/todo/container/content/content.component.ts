@@ -9,21 +9,18 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements OnInit {
-  items: Todo[] = [];
+  items: Todo[];
 
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
-    this.todoService.getAll().subscribe((result) => {
-      this.items = result;
-    });
+    this.todoService.getAll().subscribe((result) => (this.items = result));
   }
 
   addItem(toAdd: string) {
     this.todoService
       .addItem(toAdd)
       .pipe(switchMap(() => this.todoService.getAll()))
-
       .subscribe((result: Todo[]) => (this.items = result));
   }
 
