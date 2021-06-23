@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-content',
@@ -6,19 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements OnInit {
-  mySuperPoopyItems = ['Groceries', 'Wash Car', 'Pay Bills'];
+  mySuperPoopyItems: string[] = [];
 
-  constructor() {}
+  constructor(private todoService: TodoService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllItems();
+  }
 
   addItem(toAdd: string) {
-    this.mySuperPoopyItems.push(toAdd);
+    this.todoService.addItem(toAdd);
+    this.getAllItems();
   }
 
   removeItem(itemToRemove: string) {
-    this.mySuperPoopyItems = this.mySuperPoopyItems.filter(
-      (x) => x !== itemToRemove
-    );
+    this.todoService.removeItem(itemToRemove);
+    this.getAllItems();
+  }
+
+  private getAllItems() {
+    this.mySuperPoopyItems = this.todoService.getAll();
   }
 }
