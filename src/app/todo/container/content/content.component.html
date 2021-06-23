@@ -3,6 +3,6 @@
 <app-todo-form (todoAdded)="addItem($event)"></app-todo-form>
 
 <app-todo-list
-  [items]="mySuperPoopyItems"
+  [items]="items"
   (itemRemoved)="removeItem($event)"
 ></app-todo-list>

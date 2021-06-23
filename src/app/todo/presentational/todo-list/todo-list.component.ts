@@ -9,13 +9,13 @@ import { Todo } from '../../services/todo';
 export class TodoListComponent implements OnInit {
   @Input() items: Todo[] = [];
 
-  @Output() itemRemoved = new EventEmitter<string>();
+  @Output() itemRemoved = new EventEmitter<Todo>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  removeItem(reallyDelete: boolean, itemToRemove: string) {
+  removeItem(reallyDelete: boolean, itemToRemove: Todo) {
     if (reallyDelete) {
       this.itemRemoved.emit(itemToRemove);
     }

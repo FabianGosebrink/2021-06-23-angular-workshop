@@ -8,7 +8,7 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements OnInit {
-  mySuperPoopyItems: Todo[] = [];
+  items: Todo[] = [];
 
   constructor(private todoService: TodoService) {}
 
@@ -17,18 +17,20 @@ export class ContentComponent implements OnInit {
   }
 
   addItem(toAdd: string) {
-    this.todoService.addItem(toAdd);
-    this.getAllItems();
+    this.todoService.addItem(toAdd).subscribe(() => {
+      this.getAllItems();
+    });
   }
 
-  removeItem(itemToRemove: string) {
-    this.todoService.removeItem(itemToRemove);
-    this.getAllItems();
+  removeItem(itemToRemove: Todo) {
+    this.todoService.removeItem(itemToRemove).subscribe(() => {
+      this.getAllItems();
+    });
   }
 
   private getAllItems() {
     this.todoService.getAll().subscribe((result) => {
-      this.mySuperPoopyItems = result;
+      this.items = result;
     });
   }
 }

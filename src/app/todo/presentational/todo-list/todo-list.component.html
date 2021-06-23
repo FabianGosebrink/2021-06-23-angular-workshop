@@ -2,9 +2,9 @@
   <ul>
     <li *ngFor="let item of items">
       {{ item.value }} ({{ item.done }})
-      <!-- <button appConfirm (reallyDelete)="removeItem($event, item)">
+      <button appConfirm (reallyDelete)="removeItem($event, item)">
         Remove
-      </button> -->
+      </button>
     </li>
   </ul>
 </div>
