@@ -30,4 +30,11 @@ export class ContentComponent implements OnInit {
       .pipe(switchMap(() => this.todoService.getAll()))
       .subscribe((result) => (this.items = result));
   }
+
+  markedAsDone(item: Todo) {
+    this.todoService
+      .updateItem(item)
+      .pipe(switchMap(() => this.todoService.getAll()))
+      .subscribe((result) => (this.items = result));
+  }
 }

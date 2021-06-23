@@ -1,10 +1,11 @@
-<div *ngIf="items.length > 0; else noContent">
+<div *ngIf="items?.length > 0; else noContent">
   <ul>
     <li *ngFor="let item of items">
       {{ item.value }} ({{ item.done }})
       <button appConfirm (reallyDelete)="removeItem($event, item)">
         Remove
       </button>
+      <button (click)="markAsDone(item)">Done</button>
     </li>
   </ul>
 </div>

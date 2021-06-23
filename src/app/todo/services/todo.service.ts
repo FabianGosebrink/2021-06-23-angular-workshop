@@ -20,4 +20,8 @@ export class TodoService {
   removeItem(todoToRemove: Todo) {
     return this.httpClient.delete(`${this.url}/${todoToRemove.id}`);
   }
+
+  updateItem(toUpdate: Todo) {
+    return this.httpClient.put(`${this.url}/${toUpdate.id}`, toUpdate);
+  }
 }

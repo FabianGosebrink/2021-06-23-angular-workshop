@@ -10,6 +10,7 @@ export class TodoListComponent implements OnInit {
   @Input() items: Todo[] = [];
 
   @Output() itemRemoved = new EventEmitter<Todo>();
+  @Output() markedAsDone = new EventEmitter<Todo>();
 
   constructor() {}
 
@@ -19,5 +20,11 @@ export class TodoListComponent implements OnInit {
     if (reallyDelete) {
       this.itemRemoved.emit(itemToRemove);
     }
+  }
+
+  markAsDone(item: Todo) {
+    const clone = { ...item };
+    clone.done = !item.done;
+    this.markedAsDone.emit(clone);
   }
 }
