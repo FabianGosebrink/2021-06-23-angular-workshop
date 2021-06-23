@@ -8,8 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class ContentComponent implements OnInit {
   mySuperPoopyItems = ['Groceries', 'Wash Car', 'Pay Bills'];
 
-  isDisabled = true;
-
   constructor() {}
 
   ngOnInit(): void {}

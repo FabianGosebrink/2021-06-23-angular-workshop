@@ -1,8 +1,6 @@
 <h2>This is my first component</h2>
 
-<input #myInput />
-
-<button (click)="addItem(myInput.value)">Add Item</button>
+<app-todo-form (todoAdded)="addItem($event)"></app-todo-form>
 
 <app-todo-list
   [items]="mySuperPoopyItems"
