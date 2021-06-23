@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements OnInit {
-  items = ['Groceries', 'Wash Car', 'Pay Bills'];
+  mySuperPoopyItems = ['Groceries', 'Wash Car', 'Pay Bills'];
 
   isDisabled = true;
 
@@ -15,12 +15,12 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {}
 
   addItem(toAdd: string) {
-    this.items.push(toAdd);
+    this.mySuperPoopyItems.push(toAdd);
   }
 
-  removeItem(reallyDelete: boolean, itemToRemove: string) {
-    if (reallyDelete) {
-      this.items = this.items.filter((x) => x !== itemToRemove);
-    }
+  removeItem(itemToRemove: string) {
+    this.mySuperPoopyItems = this.mySuperPoopyItems.filter(
+      (x) => x !== itemToRemove
+    );
   }
 }

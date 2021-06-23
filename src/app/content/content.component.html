@@ -4,17 +4,7 @@
 
 <button (click)="addItem(myInput.value)">Add Item</button>
 
-<!-- <div *ngIf="items.length > 0; else noContent">
-  <ul>
-    <li *ngFor="let item of items">
-      {{ item }}
-      <button appConfirm (reallyDelete)="removeItem($event, item)">
-        Remove
-      </button>
-    </li>
-  </ul>
-</div> -->
-
-<ng-template #noContent>No items available</ng-template>
-
-<app-todo-list [items]="items"></app-todo-list>
+<app-todo-list
+  [items]="mySuperPoopyItems"
+  (itemRemoved)="removeItem($event)"
+></app-todo-list>
