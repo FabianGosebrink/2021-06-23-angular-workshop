@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-form',
@@ -8,15 +9,24 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class TodoFormComponent implements OnInit {
   @Output() todoAdded = new EventEmitter();
 
-  constructor() {}
+  formGroup: FormGroup;
+
+  constructor() {
+    this.formGroup = new FormGroup({
+      todoValue: new FormControl('', Validators.required),
+    });
+  }
 
   ngOnInit(): void {}
 
-  addItem(valueToAdd: string) {
-    if (!valueToAdd) {
+  addItem() {
+    if (!this.formGroup.valid) {
       return;
     }
 
-    this.todoAdded.emit(valueToAdd);
+    const valueToSend = this.formGroup.value?.todoValue;
+
+    this.todoAdded.emit(valueToSend);
+    this.formGroup.reset();
   }
 }

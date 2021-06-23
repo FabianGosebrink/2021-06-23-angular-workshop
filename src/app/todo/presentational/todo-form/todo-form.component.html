@@ -1,3 +1,8 @@
-<input #myInput />
+<form [formGroup]="formGroup" (ngSubmit)="addItem()">
+  <input type="text" formControlName="todoValue" />
+  <button [disabled]="!formGroup.valid">Add Todo</button>
 
-<button (click)="addItem(myInput.value)">Add Item</button>
+  <span *ngIf="formGroup?.get('todoValue').errors?.required">
+    Bitte gib ein Todo Value an
+  </span>
+</form>

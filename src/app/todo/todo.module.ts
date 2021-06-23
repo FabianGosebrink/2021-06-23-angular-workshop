@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { ContentComponent } from './container/content/content.component';
 import { TodoFormComponent } from './presentational/todo-form/todo-form.component';
@@ -8,7 +9,7 @@ import { TodoListComponent } from './presentational/todo-list/todo-list.componen
 
 @NgModule({
   declarations: [ContentComponent, TodoListComponent, TodoFormComponent],
-  imports: [SharedModule, CommonModule, HttpClientModule],
+  imports: [SharedModule, CommonModule, HttpClientModule, ReactiveFormsModule],
   exports: [ContentComponent],
 })
 export class TodoModule {}
