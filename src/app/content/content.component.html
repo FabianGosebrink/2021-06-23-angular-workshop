@@ -4,7 +4,7 @@
 
 <button (click)="addItem(myInput.value)">Add Item</button>
 
-<div *ngIf="items.length > 0; else noContent">
+<!-- <div *ngIf="items.length > 0; else noContent">
   <ul>
     <li *ngFor="let item of items">
       {{ item }}
@@ -13,6 +13,8 @@
       </button>
     </li>
   </ul>
-</div>
+</div> -->
 
 <ng-template #noContent>No items available</ng-template>
+
+<app-todo-list [items]="items"></app-todo-list>
